@@ -1,0 +1,101 @@
+.App {
+  text-align: center;
+  margin: 75px auto;
+  max-width: 1000px;
+}
+
+.user-bar {
+  display: grid;
+  grid-template-columns: auto auto;
+  font-size: 0.9em;
+}
+
+#LogedUser,
+.link-home,
+.form-vote
+{
+  text-align: left;
+}
+
+.link-logout
+{
+  text-align: right;
+}
+
+.menu {
+  display: grid;
+  grid-template-columns: 25% 24% 24% 25% ;
+  grid-column-gap: 0.65%;
+  font-size: 1.4em;
+  margin: 15px 0 120px 0;
+  align-items: end;
+}
+.menu div {
+  border-bottom: 2px solid  OliveDrab;
+}
+.menu p {
+  margin-bottom: 5px;
+}
+
+.question-card {
+  max-width: 600px;
+  margin:auto;
+}
+
+.question-card h1 {
+  font-size: 2.2em;
+}
+
+
+.question-card input {
+  font-size: 1.0em;
+    margin: 25px auto 5px 10px;
+}
+
+.question-card form {
+  font-size: 1.3em;
+  margin: auto auto 15px auto;
+}
+.question-card hr {
+  color:  	lightsteelblue;
+}
+
+.questionAuthor {
+  display: grid;
+  grid-template-columns: auto 100px;
+  grid-column-gap: 10px;
+  text-align: right;
+  margin: 10px auto auto auto;
+
+}
+.questionAuthor p {
+  align-self: end;
+  margin-bottom: 0;
+
+}
+
+.user-avatar {
+  width: 80px;
+  height: 100px;
+  margin: 10px auto auto auto;
+  border-radius: 7px;
+}
+
+.special-text {
+  font-family: 'Kalam', cursive;
+  margin: auto auto 5px auto;
+}
+.question-list  {
+  max-width: 500px;
+  margin: auto auto auto auto;
+}
+.question-list p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.question-list-bold {
+  font-weight: bold;
+  padding-bottom: 8px;
+  padding-top: 15px;
+}

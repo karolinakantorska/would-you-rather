@@ -1,26 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { handleUsersInitialData } from '../actions/shared'
+import './App.css';
+import UserBar from './UserBar'
+import Menu from './Menu'
+import QuestionCard from './QuestionCard'
+import QuestionList from './QuestionList'
+import Login from './Login'
 
-//import './App.css';
+class App extends Component {
+  componentDidMount () {
+    this.props.dispatch(handleUsersInitialData())
+  }
+  render() {
+    return (
+      <div className="App">
+        <UserBar/>
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
+        <Login/>
+      </div>
+    )
+  }
 
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
 }
 
-export default App;
+export default connect()(App);
