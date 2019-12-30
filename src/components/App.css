@@ -11,13 +11,13 @@
 }
 
 #LogedUser,
-.link-home,
+.link-left,
 .form-vote
 {
   text-align: left;
 }
 
-.link-logout
+.link-right
 {
   text-align: right;
 }
@@ -30,20 +30,20 @@
   margin: 15px 0 120px 0;
   align-items: end;
 }
-.menu div {
+.link,
+.link-left,
+.link-right {
   border-bottom: 2px solid  OliveDrab;
 }
 .menu p {
-  margin-bottom: 5px;
+  margin-bottom: 0px;
+  color: black;
+
 }
 
 .question-card {
   max-width: 600px;
   margin:auto;
-}
-
-.question-card h1 {
-  font-size: 2.2em;
 }
 
 
