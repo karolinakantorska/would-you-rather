@@ -9,26 +9,26 @@ class AddQuestion extends Component {
   }
 
   render () {
-    const {authedUser} = this.props
-
-    if (authedUser=== null) {
-      return (
-        <Redirect to= '/login' />
-      )
-    }
+    const {logedUser} = this.props
+     if (logedUser.logedUser === '') {
+       return (
+             <Redirect to= '/login' />
+       )
+     }
     else {
       return (
         <div  className= 'container'>
-          <Menu />
+          <Menu name = {logedUser} />
           <p>Add Question Form </p>
+          <button>Add Question</button>
         </div>
       )
     }
   }
 }
-function mapStateToProps({authedUser}) {
+function mapStateToProps({logedUser, }) {
   return {
-    authedUser
+    logedUser,
   }
 }
 

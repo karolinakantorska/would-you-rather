@@ -7,47 +7,54 @@ import QuestionList from './QuestionList'
 class Home extends Component {
 
   render () {
-    const {authedUser, users, questionId, u} = this.props
-
-    console.log('authedUser: ',authedUser)
-    console.log('users: ',users)
-    console.log('questionId: ',questionId)
-    console.log('u: ',u)
-    // PROBLEM APPEARS HERE
-    console.log('u: ',u.id)
-    if (authedUser === null) {
-      return (
-            <Redirect to= '/login' />
-      )
-    }
+    const {logedUser} = this.props
+     if (logedUser.id === '') {
+       return (
+             <Redirect to= '/login' />
+       )
+     }
 
     else  {
+      const {logedUserID, logedUserName, logedUserData, questionId } = this.props
+      const logedUserAnswers = Object.keys(logedUserData.answers)
+      let unanswered =[];
+
+       (() =>  {questionId.map((q) =>
+          (!logedUserAnswers.includes(q)) &&
+         unanswered.push(q)
+       )})()
+
 
       return (
         <div className= 'container'>
-          <Menu name = {authedUser}/>
+          <Menu name = {logedUserName}/>
           <div>
-
-
-          </div>
-          <div>
-            <p> Answeared </p>
-
+            <div>Answered
+                <QuestionList ids={unanswered} />
+            </div>
+            <div>UnAnswered
+              <ul>
+                {logedUserAnswers.map((qId) => (
+                  <li key={qId}>{qId}</li>
+                ))
+                }
+              </ul>
+            </div>
           </div>
         </div>
       )
     }
   }
 }
-function mapStateToProps ({authedUser, questions, users}) {
-  const u= users[authedUser]
-
+function mapStateToProps ({logedUser, users, questions}) {
+  const logedUserID = logedUser.id
+  const logedUserName = logedUser.name
+  const logedUserData = users[logedUserID]
   return {
-    authedUser,
-
-    u,
-
-    users,
+    logedUser,
+    logedUserID,
+    logedUserName,
+    logedUserData,
     questionId: Object.keys(questions).sort((a,b) => questions[b].timestamp - questions[a].timestamp),
 
   }

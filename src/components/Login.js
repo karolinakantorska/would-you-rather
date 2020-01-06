@@ -1,25 +1,29 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setAuthedUser} from '../actions/authedUser'
+import { setLogedUser} from '../actions/logedUser'
 import { Redirect } from 'react-router-dom'
 
 class Login extends Component {
 
   state={
+    selectedUserName: 'John Doe',
     selectedUser: 'johndoe',
+
     // TODO not to hardcode johndoe
     toHome: false
   }
 
-  handleSetAuthedUser = (e) => {
+  handleSetLogedUser = (e) => {
     e.preventDefault()
     const { dispatch } = this.props
-    dispatch(setAuthedUser(this.state.selectedUser))
+    dispatch(setLogedUser(this.state.selectedUser,this.state.selectedUserName ))
     this.setState({ toHome: true })
   }
 
   setUserToState = (e) => {
-    this.setState({selectedUser:e.target.value})
+    // TODO  CORECT THIS
+    this.setState({selectedUser:  e.target.value })
+    this.setState({selectedUserName: e.target.innerText })
   }
 
   render () {
@@ -38,13 +42,13 @@ class Login extends Component {
         <div className='question-card'>
           <h2>Choose your user account and login.</h2>
           <form>
-            <select name='users' onChange={this.setUserToState} >
+            <select  >
               {userIdArray.map((id) =>
-                <option key={id} value={id}>{usersInfo[id].name}</option>
+                <option key={id} value={id} onClick={this.setUserToState}>{usersInfo[id].name}</option>
               )}
             </select>
             <br />
-            <input type='submit' value='login' onClick= {this.handleSetAuthedUser} />
+            <input type='submit' value='login' onClick= {this.handleSetLogedUser} />
           </form>
         </div>
       )
@@ -59,7 +63,6 @@ function mapStateToProps ({users}) {
   return {
     userIdArray:userIdArray,
     usersInfo:usersInfo,
-    users
   }
 }
 
