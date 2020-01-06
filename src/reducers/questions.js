@@ -9,37 +9,20 @@ export default function users (state={}, action) {
         ... action.questions
       }
     case SAVE_ANSWER_IN_Q :
+    const option= action.option
       return {
+        // TODO ask about all those [] and why I must: const option= action.option
         ...state,
         [action.qid]: {
           ...state[action.qid],
-          [action.option]: {
-            ...state[action.qid][action.option],
-            votes: {
-              ...state[action.qid][action.option].votes,
-              votes:[action.logedUserId]
-            }
+          [option]: {
+            ...state[action.qid][option],
+            votes: state[action.qid][option].votes.concat([action.authedUser])
             }
           }
         }
-
 
     default :
       return state
   }
 }
-
-// return {
-//   ...state,
-//   [action.authedUser]:{
-//     ...state[action.authedUser],
-//     answers: {
-//       ...state[action.authedUser].answers,
-//       [action.qId] : action.option
-//     }
-//   }
-// }
-
-
-// (logedUserId, qid, option)
-// {questions[qid][answer].votes.concat([logedUserId])

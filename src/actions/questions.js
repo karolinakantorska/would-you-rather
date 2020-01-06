@@ -9,10 +9,10 @@ export function receiveQuestions (questions) {
   }
 }
 
-export function saveAnswerInQ (logedUserId, qid, option) {
+export function saveAnswerInQ (authedUser, qid, option) {
   return {
     type: SAVE_ANSWER_IN_Q,
-    logedUserId,
+    authedUser,
     qid,
     option
   }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 // TODO delete it later:
-import { saveAnswer } from '../actions/users'
-import { handleSaveAnswer } from '../actions/users'
+import { saveAnswerInUsers } from '../actions/users'
+import { handleSaveAnswer } from '../actions/shared'
 // TODO delete it later:
 import { saveAnswerInQ } from '../actions/questions'
 
@@ -21,7 +21,9 @@ class QuestionCard extends Component {
     e.preventDefault()
     const { dispatch, logedUserId, id } = this.props
     const { option } = this.state
+    dispatch(saveAnswerInUsers(logedUserId, id, option ))
     dispatch(saveAnswerInQ(logedUserId, id, option ))
+    //dispatch(handleSaveAnswer(logedUserId, id, option ))
   }
 
   render() {
@@ -32,7 +34,7 @@ class QuestionCard extends Component {
         <h2 className='special-text'>Would you rather...</h2>
           <div className='form-vote'>
             <div>
-             <input type='radio' name='option' value='optionOne 'onChange= {this.addOptionToState} />
+             <input type='radio' name='option' value='optionOne'onChange= {this.addOptionToState} />
              <label>{optionOne}</label><br/>
              <input type='radio' name='option' value='optionTwo' onChange= {this.addOptionToState} />{optionTwo}
              <label>{optionTwo}</label><br/>

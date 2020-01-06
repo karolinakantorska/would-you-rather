@@ -9,14 +9,14 @@ export default function users (state={}, action) {
        ... action.users
       }
     case SAVE_ANSWER :
-// logedUserId, qId, option
+
       return {
         ...state,
         [action.authedUser]:{
           ...state[action.authedUser],
           answers: {
             ...state[action.authedUser].answers,
-            [action.qId] : action.option
+            [action.qid]: action.answer
           }
         }
       }

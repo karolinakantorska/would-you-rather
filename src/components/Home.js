@@ -30,14 +30,15 @@ class Home extends Component {
           <Menu name = {logedUserName}/>
           <div>
             <div>Answered
-                <QuestionList ids={unanswered} />
+              {logedUserAnswers.map((qId) => (
+                <li key={qId}>{qId}</li>
+              ))
+              }
+
             </div>
             <div>UnAnswered
               <ul>
-                {logedUserAnswers.map((qId) => (
-                  <li key={qId}>{qId}</li>
-                ))
-                }
+                <QuestionList ids={unanswered} />
               </ul>
             </div>
           </div>
