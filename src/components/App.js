@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { handleInitialDataUsers } from '../actions/shared'
 import { handleInitialDataQuestions } from '../actions/shared'
 import './App.css';
@@ -9,6 +9,7 @@ import Home from './Home'
 import LeaderBoard from './LeaderBoard'
 import AddQuestion from './AddQuestion'
 import QuestionCard from './QuestionCard'
+import NoMatchPage from './NoMatchPage'
 
 
 class App extends Component {
@@ -23,13 +24,14 @@ class App extends Component {
 
         // TODO block all others adresses by 404 error
         <Router >
-          <div className="App">
+          <Switch className="App">
             <Route path='/' exact component={Home} />
             <Route path='/login' component={Login} />
             <Route path='/leaderboard' component={LeaderBoard} />
             <Route path='/add' component={AddQuestion} />
             <Route path= '/questions/:id' component={QuestionCard} />
-          </div>
+            <Route component={NoMatchPage} />
+          </Switch>
         </Router>
       )
   }

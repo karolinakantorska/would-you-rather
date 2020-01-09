@@ -26,9 +26,9 @@ class QuestionCard extends Component {
     const { dispatch, logedUserId } = this.props
     const { option } = this.state
     this.setState({ answered: true})
-    //dispatch(saveAnswerInUsers(logedUserId, id, option ))
+    dispatch(saveAnswerInUsers(logedUserId, id, option ))
     dispatch(saveAnswerInQ(logedUserId, id, option ))
-    //dispatch(handleSaveAnswer(logedUserId, id, option ))
+    dispatch(handleSaveAnswer(logedUserId, id, option ))
   }
 
   render() {
@@ -112,7 +112,7 @@ class QuestionCard extends Component {
        </div>
        )
      }
-     
+
   }
 }
 

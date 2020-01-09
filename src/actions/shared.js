@@ -36,6 +36,7 @@ export function handleSaveAnswer (authedUser, qid, answer) {
       authedUser,
       qid,
       answer})
+
       .then((authedUser, qid, answer) => dispatch(saveAnswerInUsers(authedUser, qid, answer)))
       .then((authedUser, qid, answer) => dispatch(saveAnswerInQ(authedUser, qid, answer)))
   }
