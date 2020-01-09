@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setLogedUser} from '../actions/logedUser'
 import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 
 class Menu extends Component {
@@ -26,10 +27,10 @@ class Menu extends Component {
           <Link to='/' className='link-left'>
             <p>Home</p>
           </Link>
-          <Link to='/addQuestion' className='link'>
+          <Link to='/add' className='link'>
             <p>Add Question</p>
           </Link>
-          <Link to='/leader' className='link'>
+          <Link to='/leaderboard' className='link'>
             <p>Leader Board</p>
           </Link >
           <Link to='/login' className='link-right' onClick= {this.logout} >

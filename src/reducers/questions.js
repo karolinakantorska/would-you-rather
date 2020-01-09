@@ -1,5 +1,6 @@
 import { RECEIVE_QUESTIONS } from '../actions/questions'
 import { SAVE_ANSWER_IN_Q } from '../actions/questions'
+import { ADD_QUESTION_IN_Q } from '../actions/questions'
 
 export default function users (state={}, action) {
   switch(action.type) {
@@ -21,6 +22,10 @@ export default function users (state={}, action) {
             }
           }
         }
+    case ADD_QUESTION_IN_Q :
+      return {
+
+      }
 
     default :
       return state

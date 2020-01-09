@@ -8,7 +8,8 @@ import { saveAnswerInQ } from './questions'
 import { setLogedUser} from './logedUser'
 import { _saveQuestionAnswer } from '../utils/_DATA'
 import { saveAnswerInUsers } from './users'
-
+import { addQuestionInQ }from './questions'
+import { _saveQuestion } from '../utils/_DATA'
 
 
 
@@ -37,5 +38,16 @@ export function handleSaveAnswer (authedUser, qid, answer) {
       answer})
       .then((authedUser, qid, answer) => dispatch(saveAnswerInUsers(authedUser, qid, answer)))
       .then((authedUser, qid, answer) => dispatch(saveAnswerInQ(authedUser, qid, answer)))
+  }
+}
+
+
+export function handleAddQuestion (optionOneText, optionTwoText, author) {
+  const question= { optionOneText, optionTwoText, author }
+  return (dispatch) => {
+    return _saveQuestion (question)({
+      question
+    })
+    .then((optionOneText, optionTwoText, author) => dispatch(addQuestionInQ (optionOneText, optionTwoText, author)))
   }
 }

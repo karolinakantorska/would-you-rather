@@ -5,12 +5,24 @@ import Menu from './Menu'
 
 class AddQuestion extends Component {
   state= {
-    authedUser: ''
+    textOne:'',
+    textTwo:'',
   }
 
+  setTextToState= (e) => {
+    this.setState({[e.target.name]: e.target.value})
+  }
+
+  resetstate=()=>{
+    this.setState({textOne:'', textTwo:'',})
+  }
+
+//// TODO: ADD TEXT TO STORE AND BACKSERVER
+
   render () {
-    const {logedUser} = this.props
-     if (logedUser.logedUser === '') {
+    const {logedUserID, logedUserName} = this.props
+    const { textOne, textTwo }= this.state
+     if (logedUserID === '') {
        return (
              <Redirect to= '/login' />
        )
@@ -18,17 +30,31 @@ class AddQuestion extends Component {
     else {
       return (
         <div  className= 'container'>
-          <Menu name = {logedUser} />
-          <p>Add Question Form </p>
-          <button>Add Question</button>
+          <Menu  name = {logedUserName} />
+          <h1>Add Question </h1>
+          <h2>Would you rather... </h2>
+            <div >
+
+              <label>Answer One:</label><br/>
+                <input type='text' onChange= {this.setTextToState} value= {textOne} name= 'textOne' /><br/>
+
+
+              <label>Answer Two:</label><br/>
+                <input type='text' onChange= {this.setTextToState} value= {textTwo} name= 'textTwo' /><br/>
+
+              <input type="submit" value='add question' />
+            </div>
         </div>
       )
     }
   }
 }
-function mapStateToProps({logedUser, }) {
+function mapStateToProps({logedUser}) {
+  const logedUserID = logedUser.id
+  const logedUserName = logedUser.name
   return {
-    logedUser,
+    logedUserID,
+    logedUserName,
   }
 }
 

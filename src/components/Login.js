@@ -61,8 +61,8 @@ function mapStateToProps ({users}) {
   const usersInfo = users
 
   return {
-    userIdArray:userIdArray,
-    usersInfo:usersInfo,
+    userIdArray,
+    usersInfo,
   }
 }
 
