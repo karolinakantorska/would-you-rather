@@ -41,12 +41,10 @@ export function handleAddQuestion (optionOneText, optionTwoText, author) {
       optionTwoText,
       author
     })
-      .then((question, users) =>
-      console.log(question.id),
-      dispatch(addQuestionInQ(question)),
-      dispatch(addQuestionInU(question.author,question.id)))
+      .then((question, users) =>{
+      console.log(question.id);
+      dispatch(addQuestionInQ(question));
+      dispatch(addQuestionInU(question.author, question.id))
+    })
   }
-
 }
-
-// function formatQuestion ({ optionOneText, optionTwoText, author })

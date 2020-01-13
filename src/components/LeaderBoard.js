@@ -12,12 +12,12 @@ class LeaderBoard extends Component {
   render () {
 
     const {logedUserID, logedUserName, leaderArray} = this.props
-     if (logedUserID === '') {
-       return (
-             <Redirect to= '/login' />
-       )
-     }
-    else {
+    //  if (logedUserID === '') {
+    //    return (
+    //          <Redirect to= '/login' />
+    //    )
+    //  }
+    // else {
       return (
         <div  >
           <Menu name = {logedUserName} />
@@ -31,7 +31,7 @@ class LeaderBoard extends Component {
           </div>
       </div>
       )
-    }
+    // }
   }
 }
 

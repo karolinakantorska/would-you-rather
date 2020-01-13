@@ -18,14 +18,14 @@ class Home extends Component {
   }
 
   render () {
-    const {logedUserID} = this.props
-     if (logedUserID === '') {
-       return (
-             <Redirect to= '/login' />
-       )
-     }
 
-    else  {
+    //  if (logedUserID === '') {
+    //    return (
+    //          <Redirect to= '/login' />
+    //    )
+    //  }
+    //
+    // else  {
        const {logedUserID, logedUserName, unanswered, answered, } = this.props
        const { seeQuestion, linkText }= this.state
 
@@ -52,7 +52,7 @@ class Home extends Component {
           </div>
         </div>
       )
-    }
+    // }
   }
 }
 

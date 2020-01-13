@@ -31,13 +31,13 @@ class QuestionCard extends Component {
     const { answered } = this.state
     const { logedUserID, logedUserName}= this.props
 
-     if (logedUserID === '') {
-       return (
-             <Redirect to= '/login' />
-       )
-     }
-
-     else {
+     // if (logedUserID === '') {
+     //   return (
+     //         <Redirect to= '/login' />
+     //   )
+     // }
+     //
+     // else {
 
        const { questions, addOptionToState,logedUserAnswers, avatars}= this.props
        const author= questions[id].author
@@ -102,7 +102,7 @@ class QuestionCard extends Component {
 
        </div>
        )
-     }
+     // }
 
   }
 }

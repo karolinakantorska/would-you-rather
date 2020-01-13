@@ -6,10 +6,10 @@ import { Redirect } from 'react-router-dom'
 class Login extends Component {
 
   state={
+    // TODO not to hardcode johndoe
     selectedUserName: 'John Doe',
     selectedUser: 'johndoe',
 
-    // TODO not to hardcode johndoe
     toHome: false
   }
 
@@ -29,14 +29,13 @@ class Login extends Component {
     const { userIdArray, usersInfo} = this.props
     const {  toHome } = this.state
 
-    console.log(this.props)
-
     if (toHome) {
       return (
       <Redirect to= '/' />
       )
     }
     else {
+
       return (
         <div className='container-login'>
           <h2>Choose your user account and login.</h2>

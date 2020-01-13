@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { handleInitialDataUsers, handleInitialDataQuestions } from '../actions/shared'
 import './App.css';
 import Login from './Login'
@@ -19,25 +19,37 @@ class App extends Component {
 
   }
   render() {
-      return (
 
-        <Router >
-          <Switch className="App">
-            <Route path='/' exact component={Home} />
-            <Route path='/login' component={Login} />
-            <Route path='/leaderboard' component={LeaderBoard} />
-            <Route path='/add' component={AddQuestion} />
-            <Route path= '/questions/:id' component={QuestionCard} />
-            <Route component={NoMatchPage} />
-          </Switch>
-        </Router>
+    const { logedUserID } = this.props
+
+
+    const PrivateRoute = ({ component: Component, ...rest }) => (
+      <Route {...rest} render={(props) => (
+        logedUserID === ''
+          ? <Redirect to='/login' />
+          : <Component {...props} />
+      )} />
+    )
+      return (
+         <Router >
+           <Switch className="App">
+             <PrivateRoute path='/' exact component={Home} />
+             <Route path='/login' component={Login} />
+             <PrivateRoute path='/leaderboard' component={LeaderBoard} />
+             <PrivateRoute path='/add' component={AddQuestion} />
+             <PrivateRoute path= '/questions/:id' component={QuestionCard} />
+             <Route component={NoMatchPage} />
+           </Switch>
+         </Router>
+
       )
   }
 }
 // TODO delete mapStateToProps
-function mapStateToProps(state){
+function mapStateToProps(logedUser){
+  const logedUserID = logedUser.id
   return {
-    state
+    logedUserID
   }
 }
 export default connect(mapStateToProps)(App);

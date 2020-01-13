@@ -28,12 +28,12 @@ class AddQuestion extends Component {
   render () {
     const {logedUserID, logedUserName} = this.props
     const { textOne, textTwo }= this.state
-     if (logedUserID === '') {
-       return (
-             <Redirect to= '/login' />
-       )
-     }
-    else {
+    //  if (logedUserID === '') {
+    //    return (
+    //          <Redirect to= '/login' />
+    //    )
+    //  }
+    // else {
       return (
         <div  >
           <Menu  name = {logedUserName} />
@@ -55,7 +55,7 @@ class AddQuestion extends Component {
 
         </div>
       )
-    }
+    // }
   }
 }
 function mapStateToProps({logedUser}) {
