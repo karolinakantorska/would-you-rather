@@ -8,16 +8,16 @@ class QuestionList extends Component {
       return (
         <div className='container'>
             <div className='question-list'>
-              <ul>
-                <h2>{text}</h2>
+              <h2 className='special-text'>{text}</h2>
+                <ul>
                 {questionList.map((qId) => (
                     <li key={qId} >
                       <Link to={{
                           pathname: `questions/: ${qId[0]}`,
                           state: { id: qId[0], answered: answered },
                         }}>
-                        <p>
-                          Would you rather {qId[1].optionOne} than {qId[1].optionTwo}?
+                        <p className='question-link'>
+                            	&#8226; Would you rather <b>{qId[1].optionOne}</b> <i> than </i>than <b>{qId[1].optionTwo}</b>?
                         </p>
                       </Link>
                     </li>

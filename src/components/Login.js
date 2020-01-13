@@ -21,7 +21,6 @@ class Login extends Component {
   }
 
   setUserToState = (e) => {
-    // TODO  CORECT THIS
     this.setState({selectedUser:  e.target.value })
     this.setState({selectedUserName: e.target.innerText })
   }
@@ -39,16 +38,16 @@ class Login extends Component {
     }
     else {
       return (
-        <div className='question-card'>
+        <div className='container-login'>
           <h2>Choose your user account and login.</h2>
-          <form>
-            <select  >
+          <form className='form'>
+            <select >
               {userIdArray.map((id) =>
-                <option key={id} value={id} onClick={this.setUserToState}>{usersInfo[id].name}</option>
+                <option key={id} value={id} onClick={this.setUserToState} > {usersInfo[id].name} </option>
               )}
             </select>
             <br />
-            <input type='submit' value='login' onClick= {this.handleSetLogedUser} />
+            <input  type='submit' value='login' onClick= {this.handleSetLogedUser} />
           </form>
         </div>
       )

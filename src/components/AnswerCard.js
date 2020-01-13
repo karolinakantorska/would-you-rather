@@ -7,7 +7,6 @@ class AnswerCard extends Component {
     return (
       <div className='question-card'>
         <div>
-          // TODO clearly mark choosen option
           <h2 className='special-text'>You would rather...</h2>
           <p>{optionOne}</p>
           <p className='special-text'> than </p>

@@ -30,12 +30,14 @@ class Home extends Component {
        const { seeQuestion, linkText }= this.state
 
       return (
-        <div className= 'container'>
+        <div>
           <Menu name = {logedUserName}/>
 
-          <div>
+          <div className= 'container' >
+            <section className= 'question-toggle'>
+              <p  id= 'toggleQuestions' onClick={ this.toggleQuestions }>{linkText}</p>
+            </section>
 
-            <button onClick={ this.toggleQuestions }>{linkText}</button>
 
             {(seeQuestion) ?
               <div>

@@ -14,17 +14,15 @@ class Menu extends Component {
   }
 
   render() {
-    const {name, logedUser, dispatch} =this.props
+    const {logedUserName, logedUser, dispatch} =this.props
 
-
-// TODO name of loged uner. not a nick name
     return(
-      <div className='menu-conteiner'>
+      <div className='menu-container'>
         <div className='user-bar'>
-          <div id="LogedUser">{name}</div>
+          <div id="LogedUser">{logedUserName}</div>
         </div>
         <div className='menu'>
-          <Link to='/' className='link-left'>
+          <Link to='/' className='link-left' >
             <p>Home</p>
           </Link>
           <Link to='/add' className='link'>
@@ -42,8 +40,10 @@ class Menu extends Component {
   }
 }
 function mapStateToProps({logedUser}){
+  const logedUserName = logedUser.name
   return{
-    logedUser
+    logedUser,
+    logedUserName
   }
 }
 export default connect(mapStateToProps)(Menu)

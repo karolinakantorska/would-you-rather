@@ -12,7 +12,6 @@ export default function users (state={}, action) {
     case SAVE_ANSWER_IN_Q :
     const option= action.option
       return {
-        // TODO ask about all those [] and why I must: const option= action.option
         ...state,
         [action.qid]: {
           ...state[action.qid],
@@ -24,8 +23,10 @@ export default function users (state={}, action) {
         }
     case ADD_QUESTION_IN_Q :
       return {
+        ...state,
+        state: action.question
+        }
 
-      }
 
     default :
       return state

@@ -6,5 +6,3 @@ export default applyMiddleware(
   thunk,
   logger
 )
-
-// TODO add Middleweare that is correcting users avatars

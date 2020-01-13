@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import Menu from './Menu'
+import { handleAddQuestion } from '../actions/shared'
 
 class AddQuestion extends Component {
   state= {
@@ -13,11 +14,16 @@ class AddQuestion extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  resetstate=()=>{
-    this.setState({textOne:'', textTwo:'',})
+  resetState=()=>{
+    this.setState({textOne:'', textTwo:''})
   }
 
-//// TODO: ADD TEXT TO STORE AND BACKSERVER
+  addQuestion= () => {
+    const { textOne, textTwo } = this.state
+    const { dispatch, logedUserID } = this.props
+    dispatch(handleAddQuestion(textOne, textTwo, logedUserID))
+    this.resetState()
+  }
 
   render () {
     const {logedUserID, logedUserName} = this.props
@@ -29,21 +35,24 @@ class AddQuestion extends Component {
      }
     else {
       return (
-        <div  className= 'container'>
+        <div  >
           <Menu  name = {logedUserName} />
-          <h1>Add Question </h1>
-          <h2>Would you rather... </h2>
-            <div >
 
-              <label>Answer One:</label><br/>
+        <div className= 'container' >
+          <div  className= 'add'>
+            <p>Add Question </p>
+            <h2 className='special-text' >Would you rather... </h2>
+            <div className='add-form'>
+              <label>Answer One: </label>
                 <input type='text' onChange= {this.setTextToState} value= {textOne} name= 'textOne' /><br/>
-
-
-              <label>Answer Two:</label><br/>
+              <label>Answer Two: </label>
                 <input type='text' onChange= {this.setTextToState} value= {textTwo} name= 'textTwo' /><br/>
-
-              <input type="submit" value='add question' />
+              <input type="submit" value='add question' onClick= {this.addQuestion}/>
             </div>
+
+          </div>
+        </div>
+
         </div>
       )
     }

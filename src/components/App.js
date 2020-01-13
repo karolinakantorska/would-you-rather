@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { handleInitialDataUsers } from '../actions/shared'
-import { handleInitialDataQuestions } from '../actions/shared'
+import { handleInitialDataUsers, handleInitialDataQuestions } from '../actions/shared'
 import './App.css';
 import Login from './Login'
 import Home from './Home'
@@ -22,7 +21,6 @@ class App extends Component {
   render() {
       return (
 
-        // TODO block all others adresses by 404 error
         <Router >
           <Switch className="App">
             <Route path='/' exact component={Home} />

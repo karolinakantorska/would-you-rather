@@ -18,11 +18,9 @@ export function saveAnswerInQ (authedUser, qid, option) {
   }
 }
 
-export function addQuestionInQ (optionOneText, optionTwoText, author) {
+export function addQuestionInQ (question) {
   return {
     type: ADD_QUESTION_IN_Q,
-    optionOneText,
-    optionTwoText,
-    author
+    question
   }
 }

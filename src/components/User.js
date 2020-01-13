@@ -3,13 +3,11 @@ import React, { Component } from 'react'
 class User extends Component {
 
   render (){
-    const { id, nrAnswers, nrQuestions } = this.props
+    const { id, nrAnswers, nrQuestions, userName } = this.props
     return (
-      // TODO change class name
-      <div className='question-card' >
-      // TODO change class name
+      <div className= 'container'>
+        <h4>{userName}</h4>
         <div className='questionAuthor'>
-          <p>User Name</p>
           <p>{id}</p>
             <div
               className='user-avatar'
@@ -18,10 +16,9 @@ class User extends Component {
                    }}
             ></div>
         </div>
-          // TODO correct grammar
-          <p>Asked {nrQuestions} Questions</p>
-          <p>Answeared {nrAnswers} Questions</p>
-
+          <p>Asked {nrQuestions} {(nrQuestions === 1) ? ' question' : ' questions'} </p>
+          <p>Answeared {nrAnswers} {(nrAnswers === 1) ? ' answers' : ' answers'}</p>
+          <hr />
       </div>
     )
   }

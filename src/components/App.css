@@ -1,101 +1,158 @@
-.App {
+.app {
   text-align: center;
+  margin: auto;
+}
+.special-text {
+  font-family: 'Kalam', cursive;
+  margin: auto auto 5px auto;
+}
+.container-login {
+  margin: 150px auto 5px auto;
+  max-width: 800px;
+  text-align: center;
+}
+.container {
+  margin: auto;
+  max-width: 500px;
+}
+ /* Menu */
+.menu-container {
   margin: 75px auto;
-  max-width: 1000px;
+  max-width: 800px;
 }
-
-.user-bar {
-  display: grid;
-  grid-template-columns: auto auto;
-  font-size: 0.9em;
-}
-
-#LogedUser,
-.link-left,
-.form-vote
-{
-  text-align: left;
-}
-
-.link-right
-{
-  text-align: right;
-}
-
 .menu {
   display: grid;
   grid-template-columns: 25% 24% 24% 25% ;
   grid-column-gap: 0.65%;
   font-size: 1.4em;
-  margin: 15px 0 120px 0;
+  margin: 20px 0 20px 0;
   align-items: end;
+}
+#LogedUser {
+  font-size: 0.9em;
+}
+#LogedUser,
+.link-left,
+{
+  text-align: left;
+}
+.link-right
+{
+  text-align: right;
+}
+.link
+{
+  text-align: center;
 }
 .link,
 .link-left,
 .link-right {
-  border-bottom: 2px solid  OliveDrab;
+  border-bottom: 2px solid OliveDrab;
+  border-radius: 8px 8px 0 0;
+  text-decoration: none;
 }
 .menu p {
   margin-bottom: 0px;
   color: black;
-
+  border-bottom: none;
+}
+.menu p:hover
+{
+  background-color: Beige;
 }
 
-.question-card {
-  max-width: 600px;
-  margin:auto;
+/* Login */
+.form select {
+  font-size: 1em;
+}
+.form input {
+  font-size: 1.1em;
+  margin: 15px auto auto auto;
+}
+
+/* Home */
+.question-toggle {
+  text-align: center;
+  font-size: 1.1em;
+  margin: auto  auto 30px auto;
+}
+.question-toggle p {
+  font-size: 1em;
+  text-decoration: underline;
+  line-height: 1.1em;
+}
+#toggleQuestions:hover {
+  color: OliveDrab;
+}
+
+/* Question List */
+.question-list ul {
+  margin: 20px auto auto auto;
+  padding-left: 0;
+  list-style-type:none;
+}
+li {
+  margin:  15px auto auto auto;
 }
 
 
-.question-card input {
-  font-size: 1.0em;
-    margin: 25px auto 5px 10px;
+.question-link:link {
+  color: black;
+}
+.question-link:visited {
+  color: DarkOliveGreen;
+}
+.question-link:active,
+.question-link:hover
+{
+  color: OliveDrab;
 }
 
-.question-card form {
-  font-size: 1.3em;
-  margin: auto auto 15px auto;
+
+/* Question Card */
+.card {
+  margin: 125px auto auto auto;
+}
+input {
+  font-size: 1.1em;
+  margin: 20px auto auto auto;
+}
+
+label {
+  font-size: 1.1em;
 }
 .question-card hr {
   color:  	lightsteelblue;
 }
-
+.option {
+  font-size: 2em;
+}
 .questionAuthor {
   display: grid;
   grid-template-columns: auto 100px;
   grid-column-gap: 10px;
   text-align: right;
   margin: 10px auto auto auto;
-
 }
 .questionAuthor p {
   align-self: end;
   margin-bottom: 0;
 
 }
-
 .user-avatar {
   width: 80px;
   height: 100px;
   margin: 10px auto auto auto;
   border-radius: 7px;
 }
-
-.special-text {
-  font-family: 'Kalam', cursive;
-  margin: auto auto 5px auto;
+/* Add Question */
+.add {
+  margin: 90px auto;
 }
-.question-list  {
-  max-width: 500px;
-  margin: auto auto auto auto;
+.add-form {
+  margin: 20px auto;
 }
-.question-list p {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.question-list-bold {
-  font-weight: bold;
-  padding-bottom: 8px;
-  padding-top: 15px;
+/* Leader Board */
+.leader {
+  margin: 125px auto;
 }
