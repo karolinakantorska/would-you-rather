@@ -19,8 +19,8 @@ class Login extends Component {
 
   setUserToState = (e) => {
 
-    this.setState({selectedUser:  e.target.value })
-    this.setState({selectedUserName: e.target.innerText })
+    this.setState({selectedUser:  e.target.value, selectedUserName: e.target.innerText })
+
   }
   render () {
     const { userIdArray, usersInfo} = this.props
@@ -60,7 +60,7 @@ function mapStateToProps ({users}) {
   return {
     userIdArray,
     usersInfo,
-    
+
   }
 }
 export default connect(mapStateToProps)(Login)

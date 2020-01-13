@@ -4,6 +4,7 @@ import Menu from './Menu'
 import { handleAddQuestion } from '../actions/shared'
 
 class AddQuestion extends Component {
+
   state= {
     textOne:'',
     textTwo:'',
@@ -22,6 +23,7 @@ class AddQuestion extends Component {
     const { dispatch, logedUserID } = this.props
     dispatch(handleAddQuestion(textOne, textTwo, logedUserID))
     this.resetState()
+    // <Redirect to= '/' />
   }
 
   render () {

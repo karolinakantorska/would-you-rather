@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class User extends Component {
+function User (props) {
 
-  render (){
-    const { id, nrAnswers, nrQuestions, userName } = this.props
+
+    const { id, nrAnswers, nrQuestions, userName, avatar } = props
     return (
       <div className= 'container'>
         <h4>{userName}</h4>
@@ -12,7 +12,9 @@ class User extends Component {
             <div
               className='user-avatar'
               style= {{
-                     backgroundColor: 'LightSteelBlue',
+                backgroundColor: 'LightSteelBlue' ,
+                backgroundImage: `url(${avatar})`,
+                backgroundSize: '80px 100px',
                    }}
             ></div>
         </div>
@@ -22,6 +24,6 @@ class User extends Component {
       </div>
     )
   }
-}
+
 
 export default User

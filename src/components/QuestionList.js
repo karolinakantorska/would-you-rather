@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
-class QuestionList extends Component {
+function QuestionList (props) {
 
-  render () {
-    const { questionList, text, answered } = this.props
+
+    const { questionList, text, answered } = props
       return (
         <div className='container'>
             <div className='question-list'>
@@ -28,8 +28,5 @@ class QuestionList extends Component {
         </div>
       )
   }
-}
-
-
 
 export default QuestionList

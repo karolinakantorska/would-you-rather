@@ -43,7 +43,7 @@ class App extends Component {
       )
   }
 }
-// TODO delete mapStateToProps
+
 function mapStateToProps({logedUser}){
   const logedUserID = logedUser.id
   return {

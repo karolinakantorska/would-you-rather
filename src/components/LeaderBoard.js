@@ -19,7 +19,7 @@ class LeaderBoard extends Component {
             <h2 className= 'special-text'>Leader Board</h2>
             <div>
               {leaderArray.map((leader) =>
-                 <User id={leader[1].userID} nrQuestions={leader[1].nrQuestions} nrAnswers={leader[1].nrAnswers} userName = {leader[1].userName}/>
+                 <User key={leader[1].userID}  id={leader[1].userID} nrQuestions={leader[1].nrQuestions} nrAnswers={leader[1].nrAnswers} userName = {leader[1].userName} avatar= {leader[1].avatar}/>
                )}
             </div>
           </div>
@@ -39,7 +39,8 @@ function mapStateToProps({logedUser, users}) {
     const nrAnswers = Object.keys(users[user].answers).length
     const nrQuestions = users[user].questions.length
     const userName  = users[user].name
-    leaderArray.push([nrQuestions+nrAnswers,{userID :user, nrQuestions: nrQuestions, nrAnswers:nrAnswers, userName: userName }])
+    const avatar = users[user].avatarURL
+    leaderArray.push([nrQuestions+nrAnswers,{userID :user, nrQuestions: nrQuestions, nrAnswers:nrAnswers, userName: userName, avatar }])
   })
 
   return {

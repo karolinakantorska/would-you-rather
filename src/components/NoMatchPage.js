@@ -1,14 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class NoMatchPage extends Component {
+function NoMatchPage (props) {
 
-  render () {
     return (
       <div className= 'container'>
         <h2>Error 404 . The page does not exist</h2>
       </div>
     )
   }
-}
+
 
 export default NoMatchPage
