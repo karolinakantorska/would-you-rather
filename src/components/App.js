@@ -10,13 +10,11 @@ import AddQuestion from './AddQuestion'
 import QuestionCard from './QuestionCard'
 import NoMatchPage from './NoMatchPage'
 
-
 class App extends Component {
 
   componentDidMount () {
     this.props.dispatch(handleInitialDataUsers())
     this.props.dispatch(handleInitialDataQuestions())
-
   }
   render() {
 
@@ -46,10 +44,11 @@ class App extends Component {
   }
 }
 // TODO delete mapStateToProps
-function mapStateToProps(logedUser){
+function mapStateToProps({logedUser}){
   const logedUserID = logedUser.id
   return {
     logedUserID
+
   }
 }
 export default connect(mapStateToProps)(App);

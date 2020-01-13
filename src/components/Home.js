@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import Menu from './Menu'
 import QuestionList from './QuestionList'
 
@@ -19,14 +18,7 @@ class Home extends Component {
 
   render () {
 
-    //  if (logedUserID === '') {
-    //    return (
-    //          <Redirect to= '/login' />
-    //    )
-    //  }
-    //
-    // else  {
-       const {logedUserID, logedUserName, unanswered, answered, } = this.props
+       const { logedUserName, unanswered, answered, } = this.props
        const { seeQuestion, linkText }= this.state
 
       return (
@@ -52,12 +44,10 @@ class Home extends Component {
           </div>
         </div>
       )
-    // }
   }
 }
 
 function mapStateToProps ({logedUser, questions}) {
-  const logedUserID = logedUser.id
   const logedUserName = logedUser.name
   const questionsId = Object.keys(questions).sort((a,b) => questions[b].timestamp - questions[a].timestamp)
 
@@ -81,7 +71,6 @@ function mapStateToProps ({logedUser, questions}) {
   })
 
   return {
-    logedUserID,
     logedUserName,
 
     unanswered,

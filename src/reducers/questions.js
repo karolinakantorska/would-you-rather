@@ -6,8 +6,8 @@ export default function users (state={}, action) {
   switch(action.type) {
     case RECEIVE_QUESTIONS :
       return {
-        ... state,
-        ... action.questions
+        ...state,
+        ...action.questions
       }
     case SAVE_ANSWER_IN_Q :
     const option= action.option

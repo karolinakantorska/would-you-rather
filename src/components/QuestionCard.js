@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import Menu from './Menu'
 import { handleSaveAnswer } from '../actions/shared'
 
@@ -12,8 +11,6 @@ class QuestionCard extends Component {
   }
 
   addOptionToState = (e) => {
-
-    const { dispatch } = this.props
     this.setState({ option: e.target.value})
   }
 
@@ -29,15 +26,7 @@ class QuestionCard extends Component {
   render() {
     const { id } = this.props.location.state
     const { answered } = this.state
-    const { logedUserID, logedUserName}= this.props
-
-     // if (logedUserID === '') {
-     //   return (
-     //         <Redirect to= '/login' />
-     //   )
-     // }
-     //
-     // else {
+    const { logedUserName}= this.props
 
        const { questions, addOptionToState,logedUserAnswers, avatars}= this.props
        const author= questions[id].author
@@ -77,9 +66,9 @@ class QuestionCard extends Component {
               <React.Fragment>
                 <h2 className='special-text'>Would you rather...</h2>
                   <div className='form-vote'>
-                     <input type='radio' name='option' value='optionOne'onChange= {this.addOptionToState} />
+                     <input type='radio' name='option' value='optionOne'onChange= {addOptionToState} />
                      <label>{optionOne}</label><br/>
-                     <input type='radio' name='option' value='optionTwo' onChange= {this.addOptionToState} />{optionTwo}
+                     <input type='radio' name='option' value='optionTwo' onChange= {addOptionToState} />{optionTwo}
                      <label>{optionTwo}</label><br/>
                      <input type='submit' value='Vote' onClick= {this.handleSubmitAnswer} />
                   </div>
@@ -102,7 +91,6 @@ class QuestionCard extends Component {
 
        </div>
        )
-     // }
 
   }
 }

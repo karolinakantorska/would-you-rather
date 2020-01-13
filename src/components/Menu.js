@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setLogedUser} from '../actions/logedUser'
 import { Link } from 'react-router-dom'
-import { Redirect } from 'react-router-dom'
-
 
 class Menu extends Component {
 
@@ -14,7 +12,7 @@ class Menu extends Component {
   }
 
   render() {
-    const {logedUserName, logedUser, dispatch} =this.props
+    const {logedUserName } =this.props
 
     return(
       <div className='menu-container'>

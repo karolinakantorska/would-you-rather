@@ -1,7 +1,6 @@
 import { _getUsers, _getQuestions, _saveQuestionAnswer, _saveQuestion  } from '../utils/_DATA'
 import { receiveUsers, saveAnswerInUsers, addQuestionInU } from './users'
 import { receiveQuestions, saveAnswerInQ, addQuestionInQ } from './questions'
-import { setLogedUser} from './logedUser'
 
 export function handleInitialDataUsers() {
   return (dispatch) =>  {
@@ -34,17 +33,17 @@ export function handleSaveAnswer (authedUser, qid, answer) {
 
 
 export function handleAddQuestion (optionOneText, optionTwoText, author) {
-  const question =  {optionOneText, optionTwoText, author}
+  console.log(optionOneText)
+  console.log(optionTwoText)
+  console.log(author)
   return (dispatch) => {
     return _saveQuestion ({
       optionOneText,
       optionTwoText,
       author
-    })
-      .then((question, users) =>{
-      console.log(question.id);
+    }).then((question, users) => {
       dispatch(addQuestionInQ(question));
-      dispatch(addQuestionInU(question.author, question.id))
-    })
+      dispatch(addQuestionInU(question.author, question.id));
+    });
   }
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import Menu from './Menu'
 import User from './User'
 
@@ -11,13 +10,8 @@ class LeaderBoard extends Component {
 
   render () {
 
-    const {logedUserID, logedUserName, leaderArray} = this.props
-    //  if (logedUserID === '') {
-    //    return (
-    //          <Redirect to= '/login' />
-    //    )
-    //  }
-    // else {
+    const {logedUserName, leaderArray} = this.props
+
       return (
         <div  >
           <Menu name = {logedUserName} />
@@ -31,12 +25,11 @@ class LeaderBoard extends Component {
           </div>
       </div>
       )
-    // }
+
   }
 }
 
 function mapStateToProps({logedUser, users}) {
-  const logedUserID = logedUser.id
   const logedUserName = logedUser.name
   const userIdArray = Object.keys(users)
 
@@ -50,7 +43,6 @@ function mapStateToProps({logedUser, users}) {
   })
 
   return {
-    logedUserID,
     logedUserName,
     leaderArray: leaderArray.sort().reverse()
   }
