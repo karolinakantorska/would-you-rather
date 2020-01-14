@@ -14,16 +14,12 @@ class AddQuestion extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  resetState=()=>{
-    this.setState({textOne:'', textTwo:''})
-  }
-
   addQuestion= () => {
     const { textOne, textTwo } = this.state
     const { dispatch, logedUserID } = this.props
     dispatch(handleAddQuestion(textOne, textTwo, logedUserID))
-    this.resetState()
-    // <Redirect to= '/' />
+    .then (() => this.setState({textOne:'', textTwo:''}))
+      .then(() => this.props.history.push('/'))
   }
 
   render () {
@@ -31,7 +27,7 @@ class AddQuestion extends Component {
     const { textOne, textTwo }= this.state
       return (
         <div  >
-          <Menu  name = {logedUserName} />
+          <Menu />
 
         <div className= 'container' >
           <div  className= 'add'>

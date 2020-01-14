@@ -20,28 +20,29 @@ export function handleInitialDataQuestions() {
 }
 
 export function handleSaveAnswer (authedUser, qid, answer) {
+  console.log(authedUser)
+    console.log(qid)
+      console.log(answer)
   return (dispatch) => {
     return _saveQuestionAnswer({
       authedUser,
       qid,
       answer})
-      .then((users, guestions) =>
-      dispatch(saveAnswerInUsers(authedUser, qid, answer)),
-      dispatch(saveAnswerInQ(authedUser, qid, answer)))
+      .then((users, guestions) =>{
+      dispatch(saveAnswerInUsers(authedUser, qid, answer));
+      dispatch(saveAnswerInQ(authedUser, qid, answer));
+    });
   }
 }
 
 
 export function handleAddQuestion (optionOneText, optionTwoText, author) {
-  console.log(optionOneText)
-  console.log(optionTwoText)
-  console.log(author)
   return (dispatch) => {
     return _saveQuestion ({
       optionOneText,
       optionTwoText,
-      author
-    }).then((question, users) => {
+      author})
+      .then((question, users) => {
       dispatch(addQuestionInQ(question));
       dispatch(addQuestionInU(question.author, question.id));
     });

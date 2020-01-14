@@ -18,37 +18,34 @@ class Home extends Component {
 
   render () {
 
-       const { logedUserName, unanswered, answered, } = this.props
+       const {  unanswered, answered, } = this.props
        const { seeQuestion, linkText }= this.state
 
       return (
         <div>
-          <Menu name = {logedUserName}/>
+          <Menu />
 
           <div className= 'container' >
             <section className= 'question-toggle'>
               <p  id= 'toggleQuestions' onClick={ this.toggleQuestions }>{linkText}</p>
             </section>
-
-
             {(seeQuestion) ?
               <div>
                 <QuestionList questionList={unanswered} text= 'Unanswert Questions' answered= {false} />
               </div>
               :
               <div>
-                <QuestionList questionList={answered} text= 'Answert Questions'answered= {true}/>
+                <QuestionList questionList={answered} text= 'Answert Questions' answered= {true}/>
               </div>
              }
-
           </div>
         </div>
       )
   }
 }
 
-function mapStateToProps ({logedUser, questions}) {
-  const logedUserName = logedUser.name
+function mapStateToProps (state) {
+  const {questions, users } =state
   const questionsId = Object.keys(questions).sort((a,b) => questions[b].timestamp - questions[a].timestamp)
 
   const unansweredID = questionsId.filter(
@@ -61,20 +58,22 @@ function mapStateToProps ({logedUser, questions}) {
       questions[id].optionOne.votes.includes('johndoe') || questions[id].optionTwo.votes.includes('johndoe')
     )
   )
+
   const unanswered = []
   unansweredID.map((id) => {
-    unanswered.push([id,{optionOne: questions[id].optionOne.text, optionTwo: questions[id].optionTwo.text}])
+    const author = questions[id].author
+    unanswered.push([id,{author: questions[id].author, timestamp: questions[id].timestamp, optionOne: questions[id].optionOne, optionTwo: questions[id].optionTwo, avatar: users[author].avatarURL}])
   })
   const answered = []
   answeredID.map((id) => {
-    answered.push([id,{id:id, optionOne: questions[id].optionOne.text, optionTwo: questions[id].optionTwo.text}])
+    const author = questions[id].author
+    answered.push([id,{author: author, timestamp: questions[id].timestamp, optionOne: questions[id].optionOne, optionTwo: questions[id].optionTwo, avatar: users[author].avatarURL}])
   })
 
   return {
-    logedUserName,
-
     unanswered,
     answered,
+
   }
 }
 export default connect(mapStateToProps)(Home)

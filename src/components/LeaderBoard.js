@@ -14,7 +14,7 @@ class LeaderBoard extends Component {
 
       return (
         <div  >
-          <Menu name = {logedUserName} />
+          <Menu  />
           <div className= 'container leader'>
             <h2 className= 'special-text'>Leader Board</h2>
             <div>
@@ -33,6 +33,12 @@ function mapStateToProps({logedUser, users}) {
   const logedUserName = logedUser.name
   const userIdArray = Object.keys(users)
 
+  // const leaderList = userIdArray.map((user) => {
+  //   const nrAnswers = Object.keys(users[user].answers).length
+  //   const nrQuestions = users[user].questions.length
+  //   const total = nrQuestions+nrAnswers
+  //   return {user,{ user, total, nrQuestions, nrAnswers, userName, avatar }}
+  // }
   const leaderArray =[]
 
   userIdArray.map((user) => {
