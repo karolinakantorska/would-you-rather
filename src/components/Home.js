@@ -17,14 +17,12 @@ class Home extends Component {
   }
 
   render () {
-
-       const {  unanswered, answered, } = this.props
-       const { seeQuestion, linkText }= this.state
+    const { unanswered, answered } = this.props
+    const { seeQuestion, linkText }= this.state
 
       return (
         <div>
           <Menu />
-
           <div className= 'container' >
             <section className= 'question-toggle'>
               <p  id= 'toggleQuestions' onClick={ this.toggleQuestions }>{linkText}</p>
@@ -44,8 +42,8 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps (state) {
-  const {questions, users } =state
+function mapStateToProps ({logedUser, questions}) {
+  const logedUserName = logedUser.name
   const questionsId = Object.keys(questions).sort((a,b) => questions[b].timestamp - questions[a].timestamp)
 
   const unansweredID = questionsId.filter(
@@ -61,19 +59,19 @@ function mapStateToProps (state) {
 
   const unanswered = []
   unansweredID.map((id) => {
-    const author = questions[id].author
-    unanswered.push([id,{author: questions[id].author, timestamp: questions[id].timestamp, optionOne: questions[id].optionOne, optionTwo: questions[id].optionTwo, avatar: users[author].avatarURL}])
+    unanswered.push([id,{optionOne: questions[id].optionOne.text, optionTwo: questions[id].optionTwo.text}])
   })
   const answered = []
   answeredID.map((id) => {
-    const author = questions[id].author
-    answered.push([id,{author: author, timestamp: questions[id].timestamp, optionOne: questions[id].optionOne, optionTwo: questions[id].optionTwo, avatar: users[author].avatarURL}])
+    answered.push([id,{id:id, optionOne: questions[id].optionOne.text, optionTwo: questions[id].optionTwo.text}])
   })
 
   return {
+    logedUserName,
     unanswered,
     answered,
-
+    unansweredID,
+    questions
   }
 }
 export default connect(mapStateToProps)(Home)

@@ -17,7 +17,6 @@ export function saveAnswerInUsers (authedUser, qid, answer) {
   }
 }
 export function addQuestionInU (authedUser, id) {
-
   return {
     type: ADD_QUESTION_IN_U,
     authedUser,

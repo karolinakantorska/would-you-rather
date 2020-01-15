@@ -3,9 +3,9 @@
 This is the assessment project for Udacity's React & Redux nanodegree course.
 
 You have to install Node.js package and npm install.
-To get it working lauch 'npm start'.
+To get it working launch 'npm start'.
 This will open local host: http://localhost:3000 in your browser.
 
 ## Contributing
 
-This repository is the code for a udacity nanodegree curse assessment . Therefore, we most likely will not accept pull requests.
+This repository is the code for a Udacity nanodegree curse assessment . Therefore, we most likely will not accept pull requests.

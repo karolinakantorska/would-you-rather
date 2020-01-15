@@ -4,7 +4,7 @@ import { setLogedUser} from '../actions/logedUser'
 import { Redirect } from 'react-router-dom'
 
 class Login extends Component {
-  state={
+  state= {
     selectedUserName: 'John Doe',
     selectedUser: 'johndoe',
 
@@ -18,9 +18,7 @@ class Login extends Component {
   }
 
   setUserToState = (e) => {
-
     this.setState({selectedUser:  e.target.value, selectedUserName: e.target.innerText })
-
   }
   render () {
     const { userIdArray, usersInfo} = this.props
@@ -34,7 +32,6 @@ class Login extends Component {
     }
     else {
       return (
-
         <div className='container-login'>
           <h2>Choose your user account and login.</h2>
 
@@ -54,7 +51,6 @@ class Login extends Component {
   }
 }
 function mapStateToProps ({users}) {
-
   const userIdArray = Object.keys(users).sort()
   const usersInfo = users
   return {

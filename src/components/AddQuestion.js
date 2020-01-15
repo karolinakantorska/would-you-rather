@@ -23,37 +23,31 @@ class AddQuestion extends Component {
   }
 
   render () {
-    const {logedUserName} = this.props
     const { textOne, textTwo }= this.state
       return (
         <div  >
           <Menu />
-
-        <div className= 'container' >
-          <div  className= 'add'>
-            <p>Add Question </p>
-            <h2 className='special-text' >Would you rather... </h2>
-            <div className='add-form'>
-              <label>Answer One: </label>
-                <input type='text' onChange= {this.setTextToState} value= {textOne} name= 'textOne' /><br/>
-              <label>Answer Two: </label>
-                <input type='text' onChange= {this.setTextToState} value= {textTwo} name= 'textTwo' /><br/>
-              <input type="submit" value='add question' onClick= {this.addQuestion}/>
+          <div className= 'container' >
+            <div  className= 'add'>
+              <p>Add Question </p>
+              <h2 className='special-text' >Would you rather... </h2>
+              <div className='add-form'>
+                <label>Answer One: </label>
+                  <input type='text' onChange= {this.setTextToState} value= {textOne} name= 'textOne' /><br/>
+                <label>Answer Two: </label>
+                  <input type='text' onChange= {this.setTextToState} value= {textTwo} name= 'textTwo' /><br/>
+                <input type="submit" value='add question' onClick= {this.addQuestion}/>
+              </div>
             </div>
-
           </div>
-        </div>
-
         </div>
       )
   }
 }
 function mapStateToProps({logedUser}) {
   const logedUserID = logedUser.id
-  const logedUserName = logedUser.name
   return {
-    logedUserID,
-    logedUserName,
+    logedUserID
   }
 }
 

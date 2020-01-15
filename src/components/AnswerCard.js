@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 class AnswerCard extends Component {
   render () {
-    const {id, author, optionOne, optionTwo } = this.props
+    const { author, optionOne, optionTwo } = this.props
     return (
       <div className='question-card'>
         <div>
@@ -17,23 +17,23 @@ class AnswerCard extends Component {
           <p>{author}</p>
           <div
             className='user-avatar'
-            style= {{
-                  backgroundColor: 'LightSteelBlue',
-                }}
-          ></div>
+            style={{
+              backgroundColor: 'LightSteelBlue'
+            }}
+          />
         </div>
       </div>
     )
   }
 }
-function mapStateToProps({questions, logedUser},{id}) {
+function mapStateToProps ({ questions, logedUser }, { id }) {
   const logedUserId = logedUser.id
   return {
     logedUserId,
     id,
     author: questions[id].author,
     optionOne: questions[id].optionOne.text,
-    optionTwo: questions[id].optionTwo.text,
+    optionTwo: questions[id].optionTwo.text
   }
 }
 export default connect(mapStateToProps)(AnswerCard)

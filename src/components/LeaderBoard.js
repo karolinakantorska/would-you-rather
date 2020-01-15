@@ -10,7 +10,7 @@ class LeaderBoard extends Component {
 
   render () {
 
-    const {logedUserName, leaderArray} = this.props
+    const { leaderArray} = this.props
 
       return (
         <div  >
@@ -25,23 +25,15 @@ class LeaderBoard extends Component {
           </div>
       </div>
       )
-
   }
 }
 
 function mapStateToProps({logedUser, users}) {
-  const logedUserName = logedUser.name
-  const userIdArray = Object.keys(users)
+    const userIdArray = Object.keys(users)
 
-  // const leaderList = userIdArray.map((user) => {
-  //   const nrAnswers = Object.keys(users[user].answers).length
-  //   const nrQuestions = users[user].questions.length
-  //   const total = nrQuestions+nrAnswers
-  //   return {user,{ user, total, nrQuestions, nrAnswers, userName, avatar }}
-  // }
-  const leaderArray =[]
+    const leaderArray =[]
 
-  userIdArray.map((user) => {
+    userIdArray.map((user) => {
     const nrAnswers = Object.keys(users[user].answers).length
     const nrQuestions = users[user].questions.length
     const userName  = users[user].name
@@ -50,7 +42,6 @@ function mapStateToProps({logedUser, users}) {
   })
 
   return {
-    logedUserName,
     leaderArray: leaderArray.sort().reverse()
   }
 }

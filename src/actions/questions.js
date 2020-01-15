@@ -1,6 +1,6 @@
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const SAVE_ANSWER_IN_Q = 'SAVE_ANSWER_IN_Q'
-export const ADD_QUESTION_IN_Q  = 'ADD_QUESTION_IN_Q '
+export const ADD_QUESTION_IN_Q = 'ADD_QUESTION_IN_Q '
 
 export function receiveQuestions (questions) {
   return {
