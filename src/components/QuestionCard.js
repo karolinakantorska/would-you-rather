@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Menu from './Menu'
 import { handleSaveAnswer } from '../actions/shared'
+import {Redirect } from 'react-router-dom'
 
 
 class QuestionCard extends Component {
   state= {
     option: '',
-    answered: this.props.location.state.answered,
   }
 
   addOptionToState = (e) => {
@@ -16,48 +16,48 @@ class QuestionCard extends Component {
 
   handleSubmitAnswer = (e) => {
     e.preventDefault()
-    const { dispatch, logedUserId } = this.props
-    const { id } = this.props.location.state
+    const { dispatch, logedUserId, qId } = this.props
     const { option } = this.state
-
-    dispatch(handleSaveAnswer(logedUserId, id, option ))
-    .then(() => this.props.history.push('/'))
+    dispatch(handleSaveAnswer(logedUserId, qId, option ))
   }
 
   render() {
-   const { id } = this.props.location.state
-   const { answered } = this.state
-   const { questions,logedUserAnswers, avatars}= this.props
-   const QuestionId =questions[0]
-   const author= questions[id].author
 
-   const userAvatar = avatars.filter(
-     (a) => (a[0]===author)
-   )
 
-   const optionOne= questions[id].optionOne.text
-   const optionTwo= questions[id].optionTwo.text
-   const answer= logedUserAnswers[id]
-   const nrAnsOne= questions[id].optionOne.votes.length
-   const nrAnsTwo= questions[id].optionTwo.votes.length
-   const nrAns = nrAnsOne + nrAnsTwo
+const {question}= this.props
+       if (question === undefined) {
+         return (
+           <Redirect to= '/Error404' />
+         )
+       }
+       else {
+         const { question, logedUserAnswers, avatars, answered, qId}= this.props
+          const {author, optionOne, optionTwo} = question
 
-   const percent= (partialValue, totalValue) => (
-     (100 * partialValue) / totalValue
-   )
+          const userAvatar = avatars.filter(
+             (a) => (a[0]===author)
+           )
+           const answer= logedUserAnswers[qId]
 
-       return(
+           const nrAnsOne = optionOne.votes.length
+           const nrAnsTwo = optionTwo.votes.length
+           const nrAns = nrAnsOne + nrAnsTwo
+
+           const percent= (partialValue, totalValue) => (
+              (100 * partialValue) / totalValue
+            )
+         return (
          <div >
            <Menu />
             <div className='container card'>
               {(answered) ?
               <React.Fragment>
                 <h2 className='special-text'>You would rather...</h2>
-                  {(answer===optionOne) ?
-                    <p className='special-text option'>{optionOne}{id}</p>
-                  : <p className='special-text option'>{optionTwo}</p>}
-                  <p>{nrAnsOne}{(nrAnsOne === 1) ? ' user' : ' users'} / {percent(nrAnsOne, nrAns)}% of users choose: {optionOne}</p>
-                  <p>{nrAnsTwo} {(nrAnsTwo === 1) ? ' user' : ' users'} / {percent(nrAnsTwo, nrAns)}% of users choose: {optionTwo}</p>
+                  {(answer===optionOne.text) ?
+                    <p className='special-text option'>{optionOne.text}</p>
+                  : <p className='special-text option'>{optionTwo.text}</p>}
+                  <p>{nrAnsOne}{(nrAnsOne === 1) ? ' user' : ' users'} / {percent(nrAnsOne, nrAns)}% of users choose: {optionOne.text}</p>
+                  <p>{nrAnsTwo} {(nrAnsTwo === 1) ? ' user' : ' users'} / {percent(nrAnsTwo, nrAns)}% of users choose: {optionTwo.text}</p>
                   <hr />
               </React.Fragment>
               :
@@ -66,9 +66,9 @@ class QuestionCard extends Component {
                 <p></p>
                   <div className='form-vote'>
                      <input type='radio' name= 'option' value='optionOne'onChange= {this.addOptionToState} />
-                     <label>{optionOne}</label><br/>
+                     <label>{optionOne.text}</label><br/>
                      <input type='radio' name= 'option' value='optionTwo' onChange= {this.addOptionToState} />
-                     <label>{optionTwo}</label><br/>
+                     <label>{optionTwo.text}</label><br/>
                      <input type='submit' value='Vote' onClick= {this.handleSubmitAnswer} />
                   </div>
                   <hr />
@@ -86,24 +86,40 @@ class QuestionCard extends Component {
              </div>
            </div>
        </div>
-       )
-  }
+     )
+       }
+
+
+}
 }
 
-function mapStateToProps({questions, logedUser, users}) {
+function mapStateToProps(state, props) {
+  const {questions, logedUser, users} = state
+  const qId = props.match.params.id.trim()
+
   const logedUserId = logedUser.id
-  const logedUserAnswers = users[logedUser.id].answers
+
+  const question = questions[qId]
+  console.log(question)
+  const logedUserAnswers = users[logedUserId].answers
+
+
   const usersId = Object.keys(users)
+
   const avatars = []
   usersId.map((user) =>
     avatars.push([user,users[user].avatarURL ])
   )
+  const answered = Object.keys(logedUserAnswers).includes(qId)
 
   return {
     logedUserId,
     questions,
     logedUserAnswers,
-    avatars
+    avatars,
+    question,
+    answered,
+    qId
   }
 }
 

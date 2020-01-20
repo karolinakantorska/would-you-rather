@@ -36,6 +36,7 @@ class App extends Component {
           <PrivateRoute path='/leaderboard' component={LeaderBoard} />
           <PrivateRoute path='/add' component={AddQuestion} />
           <PrivateRoute path='/questions/:id' component={QuestionCard} />
+          <Route patch='/Error 404' component={NoMatchPage} />
           <Route component={NoMatchPage} />
         </Switch>
       </Router>

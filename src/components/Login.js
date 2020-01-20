@@ -23,11 +23,11 @@ class Login extends Component {
   render () {
     const { userIdArray, usersInfo} = this.props
     const {  toHome } = this.state
-    console.log(userIdArray)
 
     if (toHome) {
       return (
-      <Redirect to= '/' />
+
+      <Redirect to={this.props.location.state ? this.props.location.state.referrer : '/'}/>
       )
     }
     else {
