@@ -31,14 +31,21 @@ class LeaderBoard extends Component {
 function mapStateToProps({logedUser, users}) {
     const userIdArray = Object.keys(users)
 
-    const leaderArray =[]
-
-    userIdArray.map((user) => {
-    const nrAnswers = Object.keys(users[user].answers).length
-    const nrQuestions = users[user].questions.length
-    const userName  = users[user].name
-    const avatar = users[user].avatarURL
-    leaderArray.push([nrQuestions+nrAnswers,{userID :user, nrQuestions: nrQuestions, nrAnswers:nrAnswers, userName: userName, avatar }])
+    const leaderArray = userIdArray.map((user) => {
+      const nrAnswers = Object.keys(users[user].answers).length
+      const nrQuestions = users[user].questions.length
+      const userName  = users[user].name
+      const avatar = users[user].avatarURL
+      return [
+        nrQuestions+nrAnswers,
+        {
+          userID :user,
+          nrQuestions: nrQuestions,
+          nrAnswers:nrAnswers,
+          userName: userName,
+          avatar
+        }
+      ]
   })
 
   return {

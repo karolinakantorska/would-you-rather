@@ -13,12 +13,13 @@ class Login extends Component {
   handleSetLogedUser = (e) => {
     e.preventDefault()
     const { dispatch } = this.props
-    dispatch(setLogedUser(this.state.selectedUser,this.state.selectedUserName ))
+    dispatch(setLogedUser(this.state.selectedUser, this.state.selectedUserName ))
     this.setState({ toHome: true })
   }
 
   setUserToState = (e) => {
-    this.setState({selectedUser:  e.target.value, selectedUserName: e.target.innerText })
+    const { usersInfo } = this.props
+    this.setState({selectedUser:  e.target.value, selectedUserName: usersInfo[e.target.value].name })
   }
   render () {
     const { userIdArray, usersInfo} = this.props
@@ -26,8 +27,7 @@ class Login extends Component {
 
     if (toHome) {
       return (
-
-      <Redirect to={this.props.location.state ? this.props.location.state.referrer : '/'}/>
+      <Redirect to={this.props.location.state ? this.props.location.state.referrer: '/'}/>
       )
     }
     else {
@@ -36,9 +36,9 @@ class Login extends Component {
           <h2>Choose your user account and login.</h2>
 
           <form className='form'>
-            <select >
+            <select onChange={this.setUserToState} >
               {userIdArray.map((id) =>
-                <option key={id} value={id} onClick={this.setUserToState}>{usersInfo[id].name}</option>
+                <option key={id} value={id} >{usersInfo[id].name}</option>
               )}
             </select>
             <br />

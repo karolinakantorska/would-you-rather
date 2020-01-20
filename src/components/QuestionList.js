@@ -11,7 +11,7 @@ function QuestionList (props) {
           {questionList.map((qId) => (
             <li className='question-link' key={qId}>
               <Link to={{
-                pathname: `questions/ ${qId[0]}`,
+                pathname: `questions/${qId[0]}`,
                 state: { id: qId[0], answered: answered }
               }}
               >

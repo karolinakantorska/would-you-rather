@@ -25,7 +25,7 @@ class AddQuestion extends Component {
   render () {
     const { textOne, textTwo }= this.state
       return (
-        <div  >
+        <div >
           <Menu />
           <div className= 'container' >
             <div  className= 'add'>

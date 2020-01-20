@@ -57,14 +57,27 @@ function mapStateToProps ({logedUser, questions}) {
     )
   )
 
-  const unanswered = []
-  unansweredID.map((id) => {
-    unanswered.push([id,{optionOne: questions[id].optionOne.text, optionTwo: questions[id].optionTwo.text}])
+  const unanswered = unansweredID.map((id) => {
+    return [
+      id,
+      {
+        id,
+        optionOne: questions[id].optionOne.text,
+        optionTwo: questions[id].optionTwo.text
+      }
+    ]
   })
-  const answered = []
-  answeredID.map((id) => {
-    answered.push([id,{id:id, optionOne: questions[id].optionOne.text, optionTwo: questions[id].optionTwo.text}])
+  const answered = answeredID.map((id) => {
+    return [
+      id,
+      {
+        id,
+        optionOne: questions[id].optionOne.text,
+        optionTwo: questions[id].optionTwo.text
+      }
+    ]
   })
+
 
   return {
     logedUserName,
