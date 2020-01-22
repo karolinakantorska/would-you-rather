@@ -8,13 +8,13 @@ class Login extends Component {
     selectedUserName: 'John Doe',
     selectedUser: 'johndoe',
 
-    toHome: false
+    redirect: false
   }
   handleSetLogedUser = (e) => {
     e.preventDefault()
     const { dispatch } = this.props
     dispatch(setLogedUser(this.state.selectedUser, this.state.selectedUserName ))
-    this.setState({ toHome: true })
+    this.setState({ redirect: true })
   }
 
   setUserToState = (e) => {
@@ -23,9 +23,8 @@ class Login extends Component {
   }
   render () {
     const { userIdArray, usersInfo} = this.props
-    const {  toHome } = this.state
-
-    if (toHome) {
+    const {  redirect } = this.state
+    if (redirect) {
       return (
       <Redirect to={this.props.location.state ? this.props.location.state.referrer: '/'}/>
       )

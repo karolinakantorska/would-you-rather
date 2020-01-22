@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './App.css'
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { handleInitialDataUsers, handleInitialDataQuestions } from '../actions/shared'
 import Login from './Login'
 import Home from './Home'
@@ -9,6 +9,7 @@ import LeaderBoard from './LeaderBoard'
 import AddQuestion from './AddQuestion'
 import QuestionCard from './QuestionCard'
 import NoMatchPage from './NoMatchPage'
+import PrivateRoute from './PrivateRoute'
 
 class App extends Component {
   componentDidMount () {
@@ -17,17 +18,6 @@ class App extends Component {
   }
 
   render () {
-    const { logedUserID } = this.props
-
-    const PrivateRoute = ({ component: Component, ...rest }) => (
-      <Route
-        {...rest} render={(props) => (
-          logedUserID === ''
-            ? <Redirect to='/login' />
-            : <Component {...props} />
-        )}
-      />
-    )
     return (
       <Router>
         <Switch className='App'>
@@ -44,11 +34,4 @@ class App extends Component {
   }
 }
 
-function mapStateToProps ({ logedUser }) {
-  const logedUserID = logedUser.id
-  return {
-    logedUserID
-
-  }
-}
-export default connect(mapStateToProps)(App)
+export default connect()(App)

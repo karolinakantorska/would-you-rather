@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom'
 
 class Menu extends Component {
 
-  logout = (e) => {
-    e.preventDefault()
+  logout = () => {
     const { dispatch } = this.props
     dispatch(setLogedUser('',''))
   }
